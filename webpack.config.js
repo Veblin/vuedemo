@@ -9,13 +9,11 @@ module.exports = {
     filename: 'build.js'
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          loaders: {
-          }
+          loaders: {}
           // other vue-loader options go here
         }
       },
@@ -41,14 +39,27 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: true,
-    headers:{
-      'Access-Control-Allow-Origin':'*'
+    proxy: {
+      '/api': {
+        // host: 'localhost:8080',
+        target: 'https://www.v2ex.com',
+        // pathRewrite: {
+        //   '^/api': '/api'
+        // },
+        changeOrigin: true,
+        secure: false,
+        // bypass: function (req, res, proxyOptions) {
+        //   if (req.headers.accept.indexOf('html') !== -1) {
+        //     console.log('Skipping proxy for browser request.');
+        //     // return '/index.html';
+        //   }
+        // }
+      }
     }
   },
   performance: {
     hints: false
   },
-  
   devtool: '#eval-source-map'
 }
 
