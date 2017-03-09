@@ -15,6 +15,7 @@
 </template>
 
 <script>
+// 导入时间格式化模块
 import formatTime from './service/formatTime.js';
 export default {
   name: 'app',
@@ -25,10 +26,12 @@ export default {
       }]
     }
   },
+  // 初始化
   created:function(){
     this.getList();
   },
   methods:{
+    // 获取列表
     getList(){
       var vm = this;
       axios.get('/api/topics/hot.json').then(function(res){
@@ -37,6 +40,7 @@ export default {
         }
       })
     },
+    //TODO 获取大图
     bigImg(url){
       console.log(url)
     },

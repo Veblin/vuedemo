@@ -40,6 +40,7 @@ module.exports = {
     historyApiFallback: true,
     noInfo: true,
     proxy: {
+      //接口转发，解决跨域问题
       '/api': {
         // host: 'localhost:8080',
         target: 'https://www.v2ex.com',
